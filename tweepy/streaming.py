@@ -635,7 +635,8 @@ class StreamingClient(BaseClient, BaseStream):
     def add_rules(self, add, **params):
         """add_rules(add, *, dry_run)
 
-        Add rules to filtered stream.
+        Adds rules to the filtered stream, which will exist indefinitely attached to the twitter application until removed via `StreamingClient.delete_rules()`. (Even if the Bearer token is regenerated!)
+        Should any rule be valid, `StreamingClient.on_data()` will be called.
 
         Parameters
         ----------
